@@ -5,12 +5,12 @@ import 'package:arckbook/theme/style.dart';
 import 'package:flutter/material.dart';
 
 class RandomProgressBar extends StatelessWidget {
-  const RandomProgressBar({super.key});
+  final int totalPages;
+  const RandomProgressBar({super.key, required this.totalPages});
 
   @override
   Widget build(BuildContext context) {
     final random = Random();
-    int totalPages = random.nextInt(401) + 300;
     int progressPercentage = random.nextInt(100) + 1;
 
     // Calculate current page based on percentage
