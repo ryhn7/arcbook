@@ -146,7 +146,9 @@ class _DetailScreenState extends State<DetailScreen> {
                           width: 52.0,
                           padding: const EdgeInsets.all(14),
                           decoration: BoxDecoration(
-                            color: cultured,
+                            color: isBookmarked
+                                ? const Color(0xFFFFE6E9)
+                                : cultured,
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: Image.asset(
@@ -171,7 +173,7 @@ class _DetailScreenState extends State<DetailScreen> {
                           onPressed: () {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                content: const Text('Starting to read...'),
+                                content: const Text('Get ready to dive in!'),
                                 duration: const Duration(seconds: 3),
                                 behavior: SnackBarBehavior.floating,
                                 shape: RoundedRectangleBorder(
