@@ -13,13 +13,11 @@ class RandomProgressBar extends StatelessWidget {
     final random = Random();
     int progressPercentage = random.nextInt(100) + 1;
 
-    // Calculate current page based on percentage
     int currentPage = (totalPages * (progressPercentage / 100)).round();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Display text with current page and total pages
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -34,7 +32,6 @@ class RandomProgressBar extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 4),
-        // Progress bar
         SizedBox(
           width: MediaQuery.of(context).size.width,
           child: LinearProgressIndicator(
