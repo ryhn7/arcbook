@@ -135,6 +135,10 @@ TextStyle getPoppinsLightStyle18({double fontSize = FontSize.s18, required Color
   return _getTextStyle(fontSize, FontWeightManager.fontWeightLight, color);
 }
 
+TextStyle getPoppinsSemiBoldStyle20({double fontSize = FontSize.s20, required Color color}) {
+  return _getTextStyle(fontSize, FontWeightManager.fontWeightSemiBold, color);
+}
+
 
 TextStyle getPoppinsExtraBoldStyle24({double fontSize = FontSize.s24, required Color color}) {
   return _getTextStyle(fontSize, FontWeightManager.fontWeightExtraBold, color);
