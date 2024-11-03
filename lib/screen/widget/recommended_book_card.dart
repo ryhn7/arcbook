@@ -25,31 +25,34 @@ class RecommendedBookCard extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 14),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              bookModel.bookTitle,
-              overflow: TextOverflow.ellipsis,
-              style: getPoppinsMediumStyle16(color: onyx),
-            ),
-            Text(
-              bookModel.bookAuthor,
-              overflow: TextOverflow.ellipsis,
-              style: getPoppinsMediumStyle12(color: oldSilver),
-            ),
-            const SizedBox(height: 8),
-            Row(
-              children: [
-                Image.asset('assets/icons/icon_star.png', width: 12),
-                const SizedBox(width: 4),
-                Text(
-                  bookModel.bookRating.toString(),
-                  style: getPoppinsSemiBoldStyle12(color: onyx),
-                ),
-              ],
-            ),
-          ],
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                bookModel.bookTitle,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: getPoppinsMediumStyle16(color: onyx),
+              ),
+              Text(
+                bookModel.bookAuthor,
+                overflow: TextOverflow.ellipsis,
+                style: getPoppinsMediumStyle12(color: oldSilver),
+              ),
+              const SizedBox(height: 8),
+              Row(
+                children: [
+                  Image.asset('assets/icons/icon_star.png', width: 12),
+                  const SizedBox(width: 4),
+                  Text(
+                    bookModel.bookRating.toString(),
+                    style: getPoppinsSemiBoldStyle12(color: onyx),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ],
     );
