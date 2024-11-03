@@ -138,6 +138,9 @@ TextStyle getPoppinsLightStyle18({double fontSize = FontSize.s18, required Color
 TextStyle getPoppinsSemiBoldStyle20({double fontSize = FontSize.s20, required Color color}) {
   return _getTextStyle(fontSize, FontWeightManager.fontWeightSemiBold, color);
 }
+TextStyle getPoppinsBoldStyle20({double fontSize = FontSize.s20, required Color color}) {
+  return _getTextStyle(fontSize, FontWeightManager.fontWeightBold, color);
+}
 
 
 TextStyle getPoppinsExtraBoldStyle24({double fontSize = FontSize.s24, required Color color}) {
@@ -162,4 +165,8 @@ TextStyle getPoppinsRegularStyle24({double fontSize = FontSize.s24, required Col
 
 TextStyle getPoppinsLightStyle24({double fontSize = FontSize.s24, required Color color}) {
   return _getTextStyle(fontSize, FontWeightManager.fontWeightLight, color);
+}
+
+TextStyle getPoppinsBoldStyle64({double fontSize = FontSize.s64, required Color color}) {
+  return _getTextStyle(fontSize, FontWeightManager.fontWeightBold, color);
 }
