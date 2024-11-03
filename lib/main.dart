@@ -1,5 +1,4 @@
-import 'package:arckbook/screen/home_screen.dart';
-import 'package:arckbook/screen/widget/bottom_navbar.dart';
+import 'package:arckbook/screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,17 +13,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'ArcBook',
       theme: ThemeData(
         useMaterial3: true,
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
           elevation: 0,
           surfaceTintColor:
-              Colors.transparent, // Disables the tint effect in Material 3
+              Colors.transparent, 
         ),
       ),
-      home: const BottomNavbarScreen(),
+      home: const SplashScreen(),
     );
   }
 }

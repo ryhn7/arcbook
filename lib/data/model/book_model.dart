@@ -6,6 +6,7 @@ class BookModel {
   double bookRating;
   String bookLanguage;
   int bookPages;
+  bool isFavorite = false;
 
   BookModel({
     required this.bookCover,
@@ -15,6 +16,7 @@ class BookModel {
     required this.bookRating,
     required this.bookLanguage,
     required this.bookPages,
+    this.isFavorite = false,
   });
 }
 
