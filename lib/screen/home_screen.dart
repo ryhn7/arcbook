@@ -12,14 +12,14 @@ class HomeScreen extends StatefulWidget {
   final BookModel? recentBook;
   final Function(BookModel) updateRecentBook;
 
-  const HomeScreen({super.key, required this.updateRecentBook, this.recentBook});
+  const HomeScreen(
+      {super.key, required this.updateRecentBook, this.recentBook});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   Widget recentBookSection() {
     if (widget.recentBook == null) {
       return const SizedBox.shrink();
@@ -189,6 +189,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
+        centerTitle: true,
         title: Text(
           'ArcBook',
           style: getPoppinsBoldStyle24(fontSize: 24, color: Colors.black),
