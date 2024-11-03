@@ -7,7 +7,8 @@ class DetailScreen extends StatefulWidget {
   final BookModel bookModel;
   final Function(BookModel) onViewed;
 
-  const DetailScreen(this.bookModel, {super.key, required this.onViewed});
+  const DetailScreen(this.bookModel,
+      {super.key, required this.onViewed});
 
   @override
   State<DetailScreen> createState() => _DetailScreenState();
@@ -19,6 +20,7 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   void initState() {
     super.initState();
+    isBookmarked = widget.bookModel.isFavorite;
     widget.onViewed(widget.bookModel);
   }
 
@@ -140,6 +142,7 @@ class _DetailScreenState extends State<DetailScreen> {
                         onTap: () {
                           setState(() {
                             isBookmarked = !isBookmarked;
+                            widget.bookModel.isFavorite = isBookmarked;
                           });
                         },
                         child: Container(
