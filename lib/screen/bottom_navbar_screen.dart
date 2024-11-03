@@ -1,8 +1,10 @@
+import 'package:arckbook/data/model/book_model.dart';
+import 'package:arckbook/screen/bookmark_screen.dart';
 import 'package:arckbook/theme/colors.dart';
 import 'package:flutter/material.dart';
 
-import '../detail_screen.dart';
-import '../home_screen.dart';
+import 'home_screen.dart';
+import 'user_screen.dart';
 
 class BottomNavbarScreen extends StatefulWidget {
   const BottomNavbarScreen({super.key});
@@ -13,12 +15,21 @@ class BottomNavbarScreen extends StatefulWidget {
 
 class _BottomNavbarScreenState extends State<BottomNavbarScreen> {
   int _selectedIndex = 0;
+  BookModel? recentBook;
 
-  final List<Widget> _screens = [
-    const HomeScreen(),
-    const DetailScreen(),
-    const Center(child: Text('User Screen', style: TextStyle(fontSize: 24))),
-  ];
+  void updateRecentBook(BookModel book) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {
+        recentBook = book;
+      });
+    });
+  }
+
+  List<Widget> get _screens => [
+        HomeScreen(updateRecentBook: updateRecentBook, recentBook: recentBook),
+        const BookmarkScreen(),
+        const UserScreen(),
+      ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -35,7 +46,7 @@ class _BottomNavbarScreenState extends State<BottomNavbarScreen> {
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         type: BottomNavigationBarType.fixed,
-      items: [
+        items: [
           BottomNavigationBarItem(
             icon: Image.asset(
               _selectedIndex == 0
@@ -67,8 +78,8 @@ class _BottomNavbarScreenState extends State<BottomNavbarScreen> {
             label: 'User', // Label is still required but will be hidden
           ),
         ],
-        showSelectedLabels: false, 
-        showUnselectedLabels: false, 
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
       ),
     );
   }

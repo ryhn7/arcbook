@@ -9,25 +9,19 @@ import '../theme/colors.dart';
 import 'detail_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final BookModel? recentBook;
+  final Function(BookModel) updateRecentBook;
+
+  const HomeScreen({super.key, required this.updateRecentBook, this.recentBook});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  BookModel? recentBook;
-
-  void updateRecentBook(BookModel book) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      setState(() {
-        recentBook = book;
-      });
-    });
-  }
 
   Widget recentBookSection() {
-    if (recentBook == null) {
+    if (widget.recentBook == null) {
       return const SizedBox.shrink();
     }
 
@@ -51,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: Image.asset(
-                    recentBook!.bookCover,
+                    widget.recentBook!.bookCover,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -62,16 +56,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      recentBook!.bookTitle,
+                      widget.recentBook!.bookTitle,
                       style: getPoppinsMediumStyle16(color: onyx),
                     ),
                     Text(
-                      recentBook!.bookAuthor,
+                      widget.recentBook!.bookAuthor,
                       style: getPoppinsMediumStyle12(color: oldSilver),
                     ),
                     const SizedBox(height: 52),
                     RandomProgressBar(
-                      totalPages: recentBook!.bookPages,
+                      totalPages: widget.recentBook!.bookPages,
                     ),
                   ],
                 ),
@@ -117,12 +111,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         MaterialPageRoute(
                           builder: (context) => DetailScreen(
                             bookModel,
-                            onViewed: updateRecentBook,
+                            onViewed: widget.updateRecentBook,
                           ),
                         ),
                       );
                       if (viewedBook != null) {
-                        updateRecentBook(viewedBook);
+                        widget.updateRecentBook(viewedBook);
                       }
                     },
                     child: PopularBookCard(bookModel),
@@ -168,12 +162,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           MaterialPageRoute(
                             builder: (context) => DetailScreen(
                               bookModel,
-                              onViewed: updateRecentBook,
+                              onViewed: widget.updateRecentBook,
                             ),
                           ),
                         );
                         if (viewedBook != null) {
-                          updateRecentBook(viewedBook);
+                          widget.updateRecentBook(viewedBook);
                         }
                       },
                       child: RecommendedBookCard(bookModel),
